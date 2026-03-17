@@ -359,3 +359,6 @@ Genspark官方服务不可用,请稍后再试。
 
 **Genspark**(
 注册领取1个月Plus): [https://www.genspark.ai](https://www.genspark.ai/invite?invite_code=YjVjMGRkYWVMZmE4YUw5MDc0TDM1ODlMZDYwMzQ4OTJlNmEx)
+
+---
+> Deployed and tested via Genspark AI Assistant

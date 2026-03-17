@@ -1,0 +1,175 @@
+{
+  "name": "genspark-coder",
+  "displayName": "Genspark Coder",
+  "description": "AI coding assistant powered by Genspark API - supports Claude, GPT, Gemini and more",
+  "version": "2.8.0",
+  "publisher": "genspark",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "AI",
+    "Chat",
+    "Other"
+  ],
+  "icon": "icon.png",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "genspark-coder",
+          "title": "Genspark Coder",
+          "icon": "$(sparkle)"
+        }
+      ]
+    },
+    "views": {
+      "genspark-coder": [
+        {
+          "type": "webview",
+          "id": "genspark-coder.chatView",
+          "name": "Chat"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "genspark-coder.openChat",
+        "title": "Genspark: Open Chat",
+        "icon": "$(sparkle)"
+      },
+      {
+        "command": "genspark-coder.newChat",
+        "title": "Genspark: New Chat",
+        "icon": "$(add)"
+      },
+      {
+        "command": "genspark-coder.showHistory",
+        "title": "Genspark: Show History",
+        "icon": "$(history)"
+      },
+      {
+        "command": "genspark-coder.configure",
+        "title": "Genspark: Configure Settings",
+        "icon": "$(gear)"
+      },
+      {
+        "command": "genspark-coder.explainCode",
+        "title": "Genspark: Explain Code"
+      },
+      {
+        "command": "genspark-coder.fixCode",
+        "title": "Genspark: Fix Code"
+      },
+      {
+        "command": "genspark-coder.improveCode",
+        "title": "Genspark: Improve Code"
+      },
+      {
+        "command": "genspark-coder.generateTests",
+        "title": "Genspark: Generate Tests"
+      },
+      {
+        "command": "genspark-coder.addToChat",
+        "title": "Genspark: Add to Chat"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "genspark-coder.explainCode",
+          "when": "editorHasSelection",
+          "group": "genspark@1"
+        },
+        {
+          "command": "genspark-coder.fixCode",
+          "when": "editorHasSelection",
+          "group": "genspark@2"
+        },
+        {
+          "command": "genspark-coder.improveCode",
+          "when": "editorHasSelection",
+          "group": "genspark@3"
+        },
+        {
+          "command": "genspark-coder.generateTests",
+          "when": "editorHasSelection",
+          "group": "genspark@4"
+        },
+        {
+          "command": "genspark-coder.addToChat",
+          "when": "editorHasSelection",
+          "group": "genspark@5"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "genspark-coder.newChat",
+          "when": "view == genspark-coder.chatView",
+          "group": "navigation@1"
+        },
+        {
+          "command": "genspark-coder.showHistory",
+          "when": "view == genspark-coder.chatView",
+          "group": "navigation@2"
+        },
+        {
+          "command": "genspark-coder.configure",
+          "when": "view == genspark-coder.chatView",
+          "group": "navigation@3"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Genspark Coder",
+      "properties": {
+        "genspark-coder.apiUrl": {
+          "type": "string",
+          "default": "https://genspark-beta.up.railway.app",
+          "description": "Genspark API base URL"
+        },
+        "genspark-coder.apiKey": {
+          "type": "string",
+          "default": "test123456",
+          "description": "API key for authentication"
+        },
+        "genspark-coder.defaultModel": {
+          "type": "string",
+          "default": "claude-sonnet-4-6",
+          "description": "Default AI model"
+        },
+        "genspark-coder.maxTokens": {
+          "type": "number",
+          "default": 8192,
+          "description": "Maximum tokens per response"
+        },
+        "genspark-coder.temperature": {
+          "type": "number",
+          "default": 0.7,
+          "minimum": 0,
+          "maximum": 2,
+          "description": "Response creativity (0=focused, 2=creative)"
+        },
+        "genspark-coder.streamResponse": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable streaming responses"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.37",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.9.3"
+  }
+}
