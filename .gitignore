@@ -1,0 +1,9 @@
+.idea
+.vscode
+upload
+*.exe
+*.db
+build
+genspark2api
+genspark2api-1.12.11/
+data/
